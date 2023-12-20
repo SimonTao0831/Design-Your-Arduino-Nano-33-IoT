@@ -63,9 +63,8 @@ The pin correspondence is as follows, so we need to change pins define.
 | GND | GND     |
 | 11    | RST    |
 
-Replace lines 5-8:
+Replace lines 6-8:
 ```
-#define SD_CS 4
 #define SWDIO 10
 #define SWCLK 9
 #define SWRST 11
