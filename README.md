@@ -1,19 +1,21 @@
 # Arduino-Bootloader-Issue
-## 
+## Introduction
+
 Recently, I designed a PCB, and its main part is based on the Arduino Nano 33 IoT. Before using it, a bootloader should burn. However, there are some issues I met so I recorded them and their solutions here.
 
-The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-the-bootloader-on-Arduino-Nano-33-IoT) about how to burn the bootloader on Arduino Nano 33 IoT can be found on the Arduino official website. There are two methods, I chose to use Arduino MKR Zero as a programmer to do this task. Then we can follow the instructions, but I found the codes need to be tuned a little.
+The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-the-bootloader-on-Arduino-Nano-33-IoT) about how to burn the bootloader on Arduino Nano 33 IoT can be found on the Arduino official website. There are two methods, I chose to use Arduino MKR Zero as a programmer to do this task, and a SanDisk Ultra 128G SD card. Then we can follow the instructions, but I found the codes need to be tuned a little.
 
-##
+## GCC 4.4 warnings
+
 The [**Adafruit DAP library**](https://www.arduino.cc/reference/en/libraries/adafruit-dap-library/) will be used. The following warnings maybe show:
 ```
-.\Documents\Arduino\libraries\Adafruit_DAP_library\Adafruit_DAP_SAM.h:166:40: note: offset of packed bit-field 'Adafruit_DAP_SAMx5::<unnamed union>::<unnamed struct>::<anonymous>' has changed in GCC 4.4
+\Documents\Arduino\libraries\Adafruit_DAP_library\Adafruit_DAP_SAM.h:166:40: note: offset of packed bit-field 'Adafruit_DAP_SAMx5::<unnamed union>::<unnamed struct>::<anonymous>' has changed in GCC 4.4
 ```
 To solve these warnings, we can open **Adafruit_DAP_SAM.h** in the following directories:
 ```
-.\Documents\Arduino\libraries\Adafruit_DAP_library\Adafruit_DAP_SAM.h
+\Documents\Arduino\libraries\Adafruit_DAP_library\Adafruit_DAP_SAM.h
 ```
-Replace lines 165-192 of the code with the following (Change all uint8_t -> uint16_t):
+Replace lines 165-190 of the code with the following (Change all uint8_t -> uint16_t):
 ```
   typedef union {
     struct __attribute__((__packed__)) {
@@ -41,16 +43,16 @@ Replace lines 165-192 of the code with the following (Change all uint8_t -> uint
     } bit;
     uint8_t reg[USER_ROW_SIZE];
   } USER_ROW;
-  USER_ROW _USER_ROW;
-};
 ```
-##
-If we follow the official instructions, we will find function **SD.begin()** cannot work.
+## Card failed, or not present
+
+If we follow the official instructions, we will find function **SD.begin()** cannot work, and the following text on the serial monitor.
 ```
 Card failed, or not present
 ```
-We can make the following modefication for origin example codes.
-- 1
+We can make the following modefication for the example codes.
+- Step 1
+
 Replace lines 5-8:
 ```
 #define SD_CS 4
@@ -58,7 +60,7 @@ Replace lines 5-8:
 #define SWCLK 9
 #define SWRST 11
 ```
-The pin correspondence is as follows:
+The pin correspondence is as follows, so we need to change pins define.
 
 | Programmer board    | Target board (Nano 33 IoT) |
 | -------- | ------- |
@@ -68,7 +70,8 @@ The pin correspondence is as follows:
 | GND | GND     |
 | 11    | RST    |
 
-- 2
+- Step 2
+
 Below line 11, add the following codes at lines 12-28:
 ```
 #ifndef SDCARD_SS_PIN
@@ -91,13 +94,37 @@ const uint8_t SD_CS_PIN = SDCARD_SS_PIN;
 
 ```
 
-- 3
-Replace lines 55-57:
+Then replace lines 55-57:
 ```
   if (!SD.begin(SD_CONFIG)) {
     error("Card failed, or not present");
   }
 ```
 
+- Step 3
+
+We should check the SD card format first, here I use SanDisk Ultra 128G, so some codes need to be tuned.
+
+Replace line 36 from:
+```
+SdFat SD;
+```
+to
+```
+SdExFat SD;
+```
+
+Replace line 60 from:
+```
+ File32 dataFile = SD.open(FILENAME);
+```
+to
+```
+ ExFile dataFile = SD.open(FILENAME);
+```
+
 - Test
-![Result](./result.md)
+
+After finishing the above adjustments, the bootloader can be burned successfully. And new Arduino Nano 33 Iot can be detected by Arduino IDE now.
+
+![Result](/result.md)
