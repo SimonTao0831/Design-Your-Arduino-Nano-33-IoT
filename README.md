@@ -1,4 +1,4 @@
-# Arduino-Bootloader-Issue
+# Arduino-Bootloader-Issues
 ## Introduction
 
 Recently, I am working on design a PCB, and its main part is based on the Arduino Nano 33 IoT. Before using it, this bootloader should burn. However, there are some issues I met during this process so I recorded them and their solutions here.
