@@ -15,7 +15,7 @@ To solve these warnings, we can open **Adafruit_DAP_SAM.h** in the following dir
 ```
 \Documents\Arduino\libraries\Adafruit_DAP_library\Adafruit_DAP_SAM.h
 ```
-Replace lines 165-190 of the code with the following (Change all uint8_t -> uint16_t):
+Replace lines 165-190 of the code with the following (Change all **uint8_t -> uint16_t**):
 ```
   typedef union {
     struct __attribute__((__packed__)) {
