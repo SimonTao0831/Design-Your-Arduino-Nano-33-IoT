@@ -7,7 +7,7 @@ The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-th
 
 ## GCC 4.4 warnings
 
-The [**Adafruit DAP library**](https://www.arduino.cc/reference/en/libraries/adafruit-dap-library/) will be used. The following warnings maybe show:
+The [**Adafruit DAP library**](https://github.com/adafruit/Adafruit_DAP) is used. The following warnings maybe show:
 ```
 \Documents\Arduino\libraries\Adafruit_DAP_library\Adafruit_DAP_SAM.h:166:40: note: offset of packed bit-field 'Adafruit_DAP_SAMx5::<unnamed union>::<unnamed struct>::<anonymous>' has changed in GCC 4.4
 ```
