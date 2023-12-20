@@ -51,7 +51,7 @@ If we follow the official instructions, we will find function **SD.begin()** can
 Card failed, or not present
 ```
 We can make the following modefication for the example codes.
-- Step 1
+- **Step 1**
 
 Replace lines 5-8:
 ```
@@ -70,7 +70,7 @@ The pin correspondence is as follows, so we need to change pins define.
 | GND | GND     |
 | 11    | RST    |
 
-- Step 2
+- **Step 2**
 
 Below line 11, add the following codes at lines 12-28:
 ```
@@ -101,7 +101,7 @@ Then replace lines 55-57:
   }
 ```
 
-- Step 3
+- **Step 3**
 
 We should check the SD card format first, here I use SanDisk Ultra 128G, so some codes need to be tuned.
 
@@ -123,7 +123,7 @@ to
  ExFile dataFile = SD.open(FILENAME);
 ```
 
-- Test
+- **Test**
 
 After finishing the above adjustments, the bootloader can be burned successfully. And new Arduino Nano 33 Iot can be detected by Arduino IDE now.
 
