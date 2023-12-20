@@ -53,13 +53,6 @@ Card failed, or not present
 We can make the following modefication for the example codes.
 - **Step 1**
 
-Replace lines 5-8:
-```
-#define SD_CS 4
-#define SWDIO 10
-#define SWCLK 9
-#define SWRST 11
-```
 The pin correspondence is as follows, so we need to change pins define.
 
 | Programmer board    | Target board (Nano 33 IoT) |
@@ -69,6 +62,14 @@ The pin correspondence is as follows, so we need to change pins define.
 | 9    | SWCLK    |
 | GND | GND     |
 | 11    | RST    |
+
+Replace lines 5-8:
+```
+#define SD_CS 4
+#define SWDIO 10
+#define SWCLK 9
+#define SWRST 11
+```
 
 - **Step 2**
 
