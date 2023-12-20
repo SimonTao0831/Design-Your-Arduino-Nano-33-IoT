@@ -1,7 +1,7 @@
 # Arduino-Bootloader-Issue
 ## Introduction
 
-Recently, I am working on design a PCB, and its main part is based on the Arduino Nano 33 IoT. Before using it, a bootloader should burn. However, there are some issues I met so I recorded them and their solutions here.
+Recently, I am working on design a PCB, and its main part is based on the Arduino Nano 33 IoT. Before using it, this bootloader should burn. However, there are some issues I met during this process so I recorded them and their solutions here.
 
 The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-the-bootloader-on-Arduino-Nano-33-IoT) about how to burn the bootloader on Arduino Nano 33 IoT can be found on the Arduino official website. There are two methods, I chose to use Arduino MKR Zero as a programmer to do this task, and a SanDisk Ultra 128G SD card. Then we can follow the instructions, but I found the codes need to be tuned a little.
 
@@ -46,7 +46,7 @@ Replace lines 165-190 of the code with the following (Change all uint8_t -> uint
 ```
 ## Card failed, or not present
 
-If we follow the official instructions, we will find function **SD.begin()** cannot work, and the following text on the serial monitor.
+If we follow the official instructions, we will perhaps find function **SD.begin()** cannot work, and the following text on the serial monitor.
 ```
 Card failed, or not present
 ```
