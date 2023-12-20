@@ -105,12 +105,20 @@ Then replace lines 55-57:
 
 We should check the SD card format first, here I use SanDisk Ultra 128G, so some codes need to be tuned.
 
-Replace line 36:
+Replace line 36 from:
+```
+SdFat SD;
+```
+to
 ```
 SdExFat SD;
 ```
 
-Replace line 60:
+Replace line 60 from:
+```
+ File32 dataFile = SD.open(FILENAME);
+```
+to
 ```
  ExFile dataFile = SD.open(FILENAME);
 ```
