@@ -127,4 +127,4 @@ to
 
 After finishing the above adjustments, the bootloader can be burned successfully. And new Arduino Nano 33 Iot can be detected by Arduino IDE now.
 
-![Result](/result.md)
+![Result](/result.png)
