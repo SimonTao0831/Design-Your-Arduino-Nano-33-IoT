@@ -1,7 +1,7 @@
 # Arduino-Bootloader-Issue
 ## Introduction
 
-Recently, I designed a PCB, and its main part is based on the Arduino Nano 33 IoT. Before using it, a bootloader should burn. However, there are some issues I met so I recorded them and their solutions here.
+Recently, I am working on design a PCB, and its main part is based on the Arduino Nano 33 IoT. Before using it, a bootloader should burn. However, there are some issues I met so I recorded them and their solutions here.
 
 The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-the-bootloader-on-Arduino-Nano-33-IoT) about how to burn the bootloader on Arduino Nano 33 IoT can be found on the Arduino official website. There are two methods, I chose to use Arduino MKR Zero as a programmer to do this task, and a SanDisk Ultra 128G SD card. Then we can follow the instructions, but I found the codes need to be tuned a little.
 
