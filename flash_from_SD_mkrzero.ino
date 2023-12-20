@@ -2,10 +2,6 @@
 #include <SPI.h>
 #include <SdFat.h>
 
-// #define SD_CS 4
-// #define SWDIO 12
-// #define SWCLK 11
-// #define SWRST 9
 #define SD_CS 4
 #define SWDIO 10
 #define SWCLK 9
