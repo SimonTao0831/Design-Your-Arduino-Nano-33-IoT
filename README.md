@@ -19,7 +19,7 @@ The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-th
 3. Open Arduino IDE, install **Adafruit DAP library**.
 4. Open [`flash_from_SD_nkrzero.ino`](/flash_from_SD_mkrzero/flash_from_SD_mkrzero.ino) file in this repository, and upload to Arduino MKR Zero.
 
-<img src="/img/programmer.png" width="500">
+![programmer](/img/programmer.png)
 
 > Note: In the official steps, we select **File > Examples > Adafruit DAP library > samd21 > flash_from_SD** from the Arduino IDE's menus. However, this sketch has some issues when we use Arduino MKR Zero as programmer.
 > - [GCC 4.4 warnings](#gcc-44-warnings)
@@ -35,7 +35,13 @@ The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-th
 | GND | GND     |
 | 11    | RST    |
 
+Here I ues a [**PIN PROBE CLIP**](https://www.digikey.sg/en/products/detail/adafruit-industries-llc/5433/16584075), which can connect two boards together easily.
+
+<img src="/img/connect.png" width="500">
+
 6. Press the reset button on the Arduino MKR Zero.
+
+![result](/img/result.png)
 
 ## Firmware
 
