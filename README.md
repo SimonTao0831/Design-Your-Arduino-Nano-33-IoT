@@ -19,6 +19,7 @@ The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-th
 3. Open Arduino IDE, install Adafruit DAP library.
 4. Open **flash_from_SD_nkrzero.ino** file in this repository, then upload to Arduino MKR Zero.
 5. Connect the programmer Arduino board to the target Arduino board as follows:
+
 | Programmer board    | Target board (Nano 33 IoT) |
 | -------- | ------- |
 | VCC  | +3.3V    |
