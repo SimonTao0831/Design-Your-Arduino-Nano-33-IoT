@@ -1,25 +1,42 @@
 # Design-Your-Arduino-Nano-33-IoT
 ## Introduction
 
-[Arduino Nano 33 IoT](https://store-usa.arduino.cc/products/arduino-nano-33-iot?selectedStore=us) is a great board with BLE, WiFi, IMU. It can be used as a mainboard of projects, and using breadboard to connect more peripherals. It is a simple and quick way for research. In addition, we can design a PCB with the desired peripheral functionality by just leaving pad locations for the Arduino Nono 33 IoT and soldering it on. In this project, based on the official open source ([Schematics](https://content.arduino.cc/assets/NANO33IoTV2.0_sch.pdf) and [Eagle files](https://content.arduino.cc/assets/Nano33IoT.zip)), I designed a new Arduino 33 Nano IoT and added the TB6612 and UWB module as peripherals (Below pictures).
+[Arduino Nano 33 IoT](https://store-usa.arduino.cc/products/arduino-nano-33-iot?selectedStore=us) is a great board with BLE, WiFi, IMU. It can be used as a mainboard of projects, and using breadboard to connect more peripherals. It is a simple and quick way for research. In addition, we can design a PCB with the desired peripheral functionality by just leaving pad locations for the Arduino Nono 33 IoT and soldering it on. In this project, based on the official open source ([Schematics](https://content.arduino.cc/assets/NANO33IoTV2.0_sch.pdf) and [Eagle files](https://content.arduino.cc/assets/Nano33IoT.zip)), I designed a new Arduino 33 Nano IoT and added the TB6612 and UWB module as peripherals (As shown below).
 
 <img src="/img/pcb_3d.png" width="300"> <img src="/img/pcb_real.png" width="300">
 
 
 ## PCB design
 
-I will not introduce this part too much. The main schematic refers to the [official documents]((https://content.arduino.cc/assets/NANO33IoTV2.0_sch.pdf)), and then add some peripherals needed for the projects, such as sensor interfaces, motor drivers, etc.
+I will not introduce this part too much. The main schematic refers to the [official documents](https://content.arduino.cc/assets/NANO33IoTV2.0_sch.pdf), and then add some peripherals needed for your project, such as sensor interfaces, motor drivers, etc.
 
 ## Bootloader
 
-The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-the-bootloader-on-Arduino-Nano-33-IoT) about how to burn the bootloader on Arduino Nano 33 IoT can be found on the Arduino official website. There are two methods, I chose to use Arduino MKR Zero as a programmer to do this task, and a SanDisk Ultra 128G SD card. Then we can follow the instructions, but I found the codes need to be tuned a little.
+The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-the-bootloader-on-Arduino-Nano-33-IoT) about how to burn the bootloader on Arduino Nano 33 IoT can be found on the Arduino official website. There are two methods, I chose to use [Arduino MKR Zero](https://store-usa.arduino.cc/products/arduino-mkr-zero-i2s-bus-sd-for-sound-music-digital-audio-data?selectedStore=us) as a programmer to do this task, and a SanDisk Ultra 128G SD card. Then we can follow the instructions, but I found the codes need to be tuned a little.
+
+1. Download the bootloader binary, rename it to **fw.bin**, and move this file to SD card.
+2. Insert the SD card into Arduino MKR Zero, connect the board to computer using USB cable.
+3. Open Arduino IDE, install Adafruit DAP library.
+4. Open **flash_from_SD_nkrzero.ino** file in this repository, then upload to Arduino MKR Zero.
+5. Connect the programmer Arduino board to the target Arduino board as follows:
+| Programmer board    | Target board (Nano 33 IoT) |
+| -------- | ------- |
+| VCC  | +3.3V    |
+| 10 | SWDIO     |
+| 9    | SWCLK    |
+| GND | GND     |
+| 11    | RST    |
+6. Press the reset button on the Arduino MKR Zero.
 
 ## Firmware
 
+1. Plug the USB cable of the new Arduino Nano 33 IoT board into your computer.
+2. Select the target board.
+3. Tools -> Firmware Updater -> select board -> check updates -> install
+
+After finishing above steps, a new Arduino Nano 33 IoT is made.
 
 ## Issues
-
-Recently, I am working on design a PCB, and its main part is based on the Arduino Nano 33 IoT. Before using it, this bootloader should burn. However, there are some issues I met during this process so I recorded them and their solutions here.
 
 ### GCC 4.4 warnings
 
