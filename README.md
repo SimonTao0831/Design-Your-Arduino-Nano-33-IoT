@@ -3,8 +3,8 @@
 
 [Arduino Nano 33 IoT](https://store-usa.arduino.cc/products/arduino-nano-33-iot?selectedStore=us) is a great board with BLE, WiFi, IMU. It can be used as a mainboard of projects, and using breadboard to connect more peripherals. It is a simple and quick way for research. In addition, we can design a PCB with the desired peripheral functionality by just leaving pad locations for the Arduino Nono 33 IoT and soldering it on. In this project, based on the official open source([Schematics](https://content.arduino.cc/assets/NANO33IoTV2.0_sch.pdf) and [Eagle files](https://content.arduino.cc/assets/Nano33IoT.zip)), I designed a new Arduino 33 Nano IoT and added the TB6612 and UWB module as peripherals.
 
-<img src="/img/pcb_3d.png" width="500">
-<img src="/img/pcb_real.png" width="500">
+<img src="/img/pcb_3d.png" width="300">
+<img src="/img/pcb_real.png" width="300">
 
 Recently, I am working on design a PCB, and its main part is based on the Arduino Nano 33 IoT. Before using it, this bootloader should burn. However, there are some issues I met during this process so I recorded them and their solutions here.
 
