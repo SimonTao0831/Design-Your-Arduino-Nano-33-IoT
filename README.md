@@ -19,9 +19,11 @@ The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-th
 3. Open Arduino IDE, install **Adafruit DAP library**.
 4. Open [`flash_from_SD_nkrzero.ino`](/flash_from_SD_mkrzero/flash_from_SD_mkrzero.ino) file in this repository, and upload to Arduino MKR Zero.
 
-In the official steps, we select **File > Examples > Adafruit DAP library > samd21 > flash_from_SD** from the Arduino IDE's menus. However, this sketch has some issues when we use Arduino MKR Zero as programmer.
-- [GCC 4.4 warnings](#gcc-44-warnings)
-- [Card failed, or not present](#card-failed-or-not-present)
+<img src="/img/programmer.png" width="500">
+
+> Note: In the official steps, we select **File > Examples > Adafruit DAP library > samd21 > flash_from_SD** from the Arduino IDE's menus. However, this sketch has some issues when we use Arduino MKR Zero as programmer.
+> - [GCC 4.4 warnings](#gcc-44-warnings)
+> - [Card failed, or not present](#card-failed-or-not-present)
 
 5. Connect the programmer Arduino board to the target Arduino board as follows:
 
