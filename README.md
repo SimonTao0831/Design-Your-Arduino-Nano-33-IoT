@@ -14,10 +14,16 @@ I will not introduce this part too much. The main schematic refers to the [offic
 
 The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-the-bootloader-on-Arduino-Nano-33-IoT) about how to burn the bootloader on Arduino Nano 33 IoT can be found on the Arduino official website. There are two methods, I chose to use [Arduino MKR Zero](https://store-usa.arduino.cc/products/arduino-mkr-zero-i2s-bus-sd-for-sound-music-digital-audio-data?selectedStore=us) as a programmer to do this task, and a SanDisk Ultra 128G SD card. Then we can follow the instructions, but I found the codes need to be tuned a little.
 
-1. Download the bootloader binary, rename it to **fw.bin**, and move this file to SD card.
+1. Download the bootloader binary, rename it to `fw.bin`, and move this file to SD card.
 2. Insert the SD card into Arduino MKR Zero, connect the board to computer using USB cable.
-3. Open Arduino IDE, install Adafruit DAP library.
-4. Open **flash_from_SD_nkrzero.ino** file in this repository, then upload to Arduino MKR Zero.
+3. Open Arduino IDE, install **Adafruit DAP library**.
+4. Open [`flash_from_SD_nkrzero.ino`](/flash_from_SD_mkrzero/flash_from_SD_mkrzero.ino) file in this repository, and upload to Arduino MKR Zero.
+
+In the official steps, we select **File > Examples > Adafruit DAP library > samd21 > flash_from_SD** from the Arduino IDE's menus. However, this sketch has some issues when we use Arduino MKR Zero as programmer.
+Issues:
+- [GCC 4.4 warnings](#gcc-44-warnings)
+- [Card failed, or not present](#card-failed-or-not-present)
+
 5. Connect the programmer Arduino board to the target Arduino board as follows:
 
 | Programmer board    | Target board (Nano 33 IoT) |
@@ -27,6 +33,7 @@ The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-th
 | 9    | SWCLK    |
 | GND | GND     |
 | 11    | RST    |
+
 6. Press the reset button on the Arduino MKR Zero.
 
 ## Firmware
