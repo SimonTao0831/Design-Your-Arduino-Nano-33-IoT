@@ -25,7 +25,7 @@ The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-th
 > - [GCC 4.4 warnings](#gcc-44-warnings)
 > - [Card failed, or not present](#card-failed-or-not-present)
 
-5. Connect the programmer Arduino board to the target Arduino board as follows:
+5. Connect the programmer Arduino board (Arduino MKR Zero) to the target Arduino board (your board) as follows:
 
 | Programmer board    | Target board (Nano 33 IoT) |
 | -------- | ------- |
