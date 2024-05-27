@@ -17,7 +17,7 @@ The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-th
 1. Download the bootloader binary, rename it to `fw.bin`, and move this file to SD card.
 2. Insert the SD card into Arduino MKR Zero, connect the board to computer using USB cable.
 3. Open Arduino IDE, install **Adafruit DAP library**.
-4. Open [`flash_from_SD_nkrzero.ino`](/flash_from_SD_mkrzero/flash_from_SD_mkrzero.ino) file in this repository, and upload to Arduino MKR Zero.
+4. Open [`flash_from_SD_nkrzero.ino`](/flash_from_SD_mkrzero/flash_from_SD_mkrzero.ino) file in this repository using Arduino IDE, and upload to Arduino MKR Zero. We will see below messages in serial monitor.
 
 ![programmer](/img/programmer.png)
 
@@ -35,19 +35,29 @@ The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-th
 | GND | GND     |
 | 11    | RST    |
 
-Here I ues a [**PIN PROBE CLIP**](https://www.digikey.sg/en/products/detail/adafruit-industries-llc/5433/16584075), which can connect two boards together easily.
+Here I use a [**PIN PROBE CLIP**](https://www.digikey.sg/en/products/detail/adafruit-industries-llc/5433/16584075), which can connect two boards together easily.
 
 <img src="/img/connect.png" width="500">
 
-6. Press the reset button on the Arduino MKR Zero.
+6. Press the reset button on the Arduino MKR Zero. Following messages should be shown in serial monitor.
 
 ![result](/img/result.png)
 
 ## Firmware
 
+After burn the bootloader, we also need to install the firmware, otherwise some modules such as BlueTooth can't work well.
+
 1. Plug the USB cable of the new Arduino Nano 33 IoT board into your computer.
+
+<img src="/img/firmware_usb.png" width="500">
+
 2. Select the target board.
-3. Tools -> Firmware Updater -> select board -> check updates -> install
+
+<img src="/img/target_board.png" width="500">
+
+3. **Tools > Firmware Updater > select board > check updates > install**
+
+> - [Firmware: Installation failed. Please try again.](#firmware-installation-failed-please-try-again)
 
 After finishing above steps, a new Arduino Nano 33 IoT is made.
 
@@ -171,8 +181,6 @@ to
  ExFile dataFile = SD.open(FILENAME);
 ```
 
-- **Test**
+### Firmware: Installation failed. Please try again.
 
-After finishing the above adjustments, the bootloader can be burned successfully. And new Arduino Nano 33 Iot can be detected by Arduino IDE now.
 
-![Result](/img/result.png)
