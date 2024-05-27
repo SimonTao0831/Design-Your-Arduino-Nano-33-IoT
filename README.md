@@ -1,16 +1,16 @@
 # Design-Your-Arduino-Nano-33-IoT
-## Introduction
+## 0. Introduction
 
 [Arduino Nano 33 IoT](https://store-usa.arduino.cc/products/arduino-nano-33-iot?selectedStore=us) is a great board with BLE, WiFi, IMU. It can be used as a mainboard of projects, and using breadboard to connect more peripherals. It is a simple and quick way for research. In addition, we can design a PCB with the desired peripheral functionality by just leaving pad locations for the Arduino Nono 33 IoT and soldering it on. In this project, based on the official open source ([Schematics](https://content.arduino.cc/assets/NANO33IoTV2.0_sch.pdf) and [Eagle files](https://content.arduino.cc/assets/Nano33IoT.zip)), I designed a new Arduino 33 Nano IoT and added the TB6612 and UWB module as peripherals (As shown below).
 
 <img src="/img/pcb_3d.png" width="300"> <img src="/img/pcb_real.png" width="300">
 
 
-## PCB design
+## 1. PCB design
 
 I will not introduce this part too much. The main schematic refers to the [official documents](https://content.arduino.cc/assets/NANO33IoTV2.0_sch.pdf), and then add some peripherals needed for your project, such as sensor interfaces, motor drivers, etc.
 
-## Bootloader
+## 2. Bootloader
 
 The [article](https://support.arduino.cc/hc/en-us/articles/8991429732124-Burn-the-bootloader-on-Arduino-Nano-33-IoT) about how to burn the bootloader on Arduino Nano 33 IoT can be found on the Arduino official website. There are two methods, I chose to use [Arduino MKR Zero](https://store-usa.arduino.cc/products/arduino-mkr-zero-i2s-bus-sd-for-sound-music-digital-audio-data?selectedStore=us) as a programmer to do this task, and a SanDisk Ultra 128G SD card. Then we can follow the instructions, but I found the codes need to be tuned a little.
 
@@ -43,7 +43,7 @@ Here I use a [**PIN PROBE CLIP**](https://www.digikey.sg/en/products/detail/adaf
 
 ![result](/img/result.png)
 
-## Firmware
+## 3. Firmware
 
 After burn the bootloader, we also need to install the firmware, otherwise some modules such as BlueTooth can't work well.
 
@@ -63,9 +63,9 @@ After burn the bootloader, we also need to install the firmware, otherwise some 
 
 After finishing above steps, a new Arduino Nano 33 IoT is made.
 
-## Issues
+## 4. Issues
 
-### GCC 4.4 warnings
+### 4.1 GCC 4.4 warnings
 
 The [**Adafruit DAP library**](https://github.com/adafruit/Adafruit_DAP) is used. The following warnings maybe show:
 ```
@@ -104,7 +104,7 @@ Replace lines 165-190 of the code with the following (Change all **uint8_t -> ui
     uint8_t reg[USER_ROW_SIZE];
   } USER_ROW;
 ```
-### Card failed, or not present
+### 4.2 Card failed, or not present
 
 If we follow the official instructions, we will perhaps find function **SD.begin()** cannot work, and the following text on the serial monitor.
 ```
@@ -183,7 +183,7 @@ to
  ExFile dataFile = SD.open(FILENAME);
 ```
 
-### Firmware: Installation failed. Please try again.
+### 4.3 Firmware: Installation failed. Please try again.
 
 When we first install firmware, sometimes will meet this error. 
 
@@ -191,7 +191,7 @@ When we first install firmware, sometimes will meet this error.
 
 At this time, we just seltect the board and install firmware again, usually the problem will be solved.
 
-### Starting Bluetooth® Low Energy failed!
+### 4.4 Starting Bluetooth® Low Energy failed!
 
 Some BLE examples will include following codes:
 
