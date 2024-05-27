@@ -53,9 +53,11 @@ After burn the bootloader, we also need to install the firmware, otherwise some 
 
 2. Select the target board.
 
-<img src="/img/target_board.png" width="500">
+<img src="/img/target_board.png" width="300">
 
 3. **Tools > Firmware Updater > select board > check updates > install**
+
+<img src="/img/firmware_success.png" width="500">
 
 > - [Firmware: Installation failed. Please try again.](#firmware-installation-failed-please-try-again)
 
@@ -183,4 +185,8 @@ to
 
 ### Firmware: Installation failed. Please try again.
 
+When we first install firmware, sometimes will meet this error. 
 
+<img src="/img/firmware_failed.png" width="500">
+
+At this time, we just seltect the board and install firmware again, usually the problem will be solved.
