@@ -71,7 +71,7 @@ The [**Adafruit DAP library**](https://github.com/adafruit/Adafruit_DAP) is used
 ```
 \Documents\Arduino\libraries\Adafruit_DAP_library\Adafruit_DAP_SAM.h:166:40: note: offset of packed bit-field 'Adafruit_DAP_SAMx5::<unnamed union>::<unnamed struct>::<anonymous>' has changed in GCC 4.4
 ```
-To solve these warnings, we can open **Adafruit_DAP_SAM.h** in the following directories:
+It is not urgent to be solved, just warnings not errors. But if we would like to solve these warnings, can open **Adafruit_DAP_SAM.h** in the following directories:
 ```
 \Documents\Arduino\libraries\Adafruit_DAP_library\Adafruit_DAP_SAM.h
 ```
@@ -190,3 +190,18 @@ When we first install firmware, sometimes will meet this error.
 <img src="/img/firmware_failed.png" width="500">
 
 At this time, we just seltect the board and install firmware again, usually the problem will be solved.
+
+### Starting Bluetooth® Low Energy failed!
+
+Some BLE examples will include following codes:
+
+```
+  // begin initialization
+  if (!BLE.begin()) {
+    Serial.println("starting Bluetooth® Low Energy failed!");
+
+    while (1);
+  }
+```
+
+If we don't install [firmware](#firmware), **BLE.begin()** function can't work.
